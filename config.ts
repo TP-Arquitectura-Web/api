@@ -1,18 +1,18 @@
-// import { Auth } from "./modules/auth/auth.class";
-
-// const appMiddleware = [Auth.authenticate()];
-
-// Habilita/deshabilita módulos de la API
 export const modules = {
     auth: {
         active: true,
         path: "./modules/auth/routes",
         route: "/modules/auth",
     },
-    llamada: {
+    envios: {
         active: true,
-        path: "./modules/llamada/routes",
-        route: "/modules/llamada",
+        path: "./modules/envios/routes",
+        route: "/modules/envios",
+    },
+    rutas: {
+        active: true,
+        path: "./modules/rutas/routes",
+        route: "/modules/rutas",
     }
 };
 

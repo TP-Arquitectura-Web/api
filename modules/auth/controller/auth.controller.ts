@@ -24,8 +24,8 @@ export async function register(req: any, res) {
  * User
  */
 
-export async function findUser(username) {
-    const pAuth = AuthUsers.findOne({ usuario: username });
+export async function findUser(email) {    
+    const pAuth = AuthUsers.findOne({ usuario: email });    
     const [auth] = await Promise.all([pAuth]);
     if (auth) {
         return {
