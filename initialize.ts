@@ -1,17 +1,13 @@
 import * as bodyParser from 'body-parser';
 import * as boolParser from 'express-query-boolean';
 import * as config from './config';
-// import { Auth } from './modules/auth/auth.class';
 import { Connections } from './connections';
 import * as HttpStatus from 'http-status-codes';
 import { Express } from 'express';
 const requireDir = require('require-dir');
 
-// TODO> implementar error hanlder del curso de angular
 export function initAPI(app: Express) {
     Connections.initialize();
-
-    // Auth.initialize(app);    
 
     app.use(bodyParser.json({ limit: '150mb' }));
     app.use(boolParser());

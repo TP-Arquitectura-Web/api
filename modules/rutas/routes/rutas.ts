@@ -7,7 +7,6 @@ router.get('/rutas', async (req: any, res) => {
     try {
 
         let rutas = await rutasSchema.ruta.find().populate('envio');
-        console.log("Rutasssss: ", rutas)
 
         return res.status(200).send(rutas)
     } catch (err) {

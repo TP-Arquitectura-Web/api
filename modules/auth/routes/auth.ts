@@ -1,7 +1,6 @@
 import * as express from "express";
-import { findUser, updateUserLogin, generateTokenPayload, register } from "./../controller/auth.controller";
+import { findUser } from "./../controller/auth.controller";
 import { Auth } from "./../auth.class";
-import { AuthUsers } from "./../schemas/authUsers";
 
 const bcrypt = require("bcrypt");
 
@@ -9,8 +8,6 @@ const sha1Hash = require("sha1");
 const router = express.Router();
 
 router.post("/login", async (req, res, next) => {
-    console.log("Entra login capo", req.body);
-
     const login = async (user) => {
         let nombreCompleto = user.datosPersonales.nombres + " " + user.datosPersonales.apellido;
         res.json({
@@ -42,25 +39,6 @@ router.post("/login", async (req, res, next) => {
     } catch (error) {
         return next(403);
     }
-});
-
-router.post("/register", async (req, res, next) => {
-    let usuarioNuevo = await register(req, res);
-    res.json(usuarioNuevo);
-});
-
-/**
- * Obtiene el user de la session
- * @get /api/auth/sesion
- */
-
-router.get("/sesion", Auth.authenticate(), (req, res) => {
-    res.json((req as any).user);
-});
-
-router.get("/usuarios", Auth.authenticate(), async (req, res, next) => {
-    let data = await AuthUsers.find();
-    res.json(data);
 });
 
 export = router;
